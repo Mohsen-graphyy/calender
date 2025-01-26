@@ -1,5 +1,25 @@
-<div class="container" cdkDropListGroup>
-  <div class="calendar-container">
-        salam
+<div class="calendar">
+  <div class="calendar__container" cdkDropListGroup>
+    <div class="calendar__header">
+      <div>
+        @if (currentView === 'month' || true) {
+        <h2 class="calendar-month">
+          {{
+            viewDate.toLocaleString("en-US", { month: "long", year: "numeric" })
+          }}
+        </h2>
+        }
+      </div>
+      <div class="calendar__controls">
+        <button mat-icon-button>
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-stroked-button>Today</button>
+        <button mat-icon-button>
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        <button mat-flat-button>Add Appointment</button>
+      </div>
+    </div>
   </div>
 </div>
