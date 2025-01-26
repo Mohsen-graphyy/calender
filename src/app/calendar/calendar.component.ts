@@ -266,4 +266,13 @@ export class CalendarComponent {
       this.timeSlots.push(time);
     }
   }
+
+  isEqualDate(date: Date, checkedDate: Date): boolean {
+    if (!date || !checkedDate) return false;
+    return (
+      date.getFullYear() === checkedDate.getFullYear() &&
+      date.getMonth() === checkedDate.getMonth() &&
+      date.getDate() === checkedDate.getDate()
+    );
+  }
 }
