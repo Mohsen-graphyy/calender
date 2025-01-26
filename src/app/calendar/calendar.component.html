@@ -11,15 +11,55 @@
         }
       </div>
       <div class="calendar__controls">
+        <button mat-stroked-button>Today</button>
         <button mat-icon-button>
           <mat-icon>chevron_left</mat-icon>
         </button>
-        <button mat-stroked-button>Today</button>
         <button mat-icon-button>
           <mat-icon>chevron_right</mat-icon>
         </button>
         <button mat-flat-button>Add Appointment</button>
       </div>
+    </div>
+    <div class="calendar__body">
+      <table
+        width="100%"
+        cellspacing="0"
+        cellpadding="0"
+        class="calendar__table"
+      >
+        <thead>
+          <tr>
+            @for (day of weekDays; track $index) {
+            <th>
+              {{ day }}
+            </th>
+            }
+          </tr>
+        </thead>
+        <tbody cdkDropListGroup>
+          @for (week of weeks; track $index) {
+          <tr>
+            @for (date of week; track $index) {
+            <td>
+              <div class="cell-overlay" tabindex="0"></div>
+              <div class="date">{{ date.getDate() }}</div>
+              <div class="appointments">
+                <!-- @for (appointment of appointments; track $index) { -->
+                <ng-container>
+                  <div tabindex="0" class="appointment">
+                    <!-- <span>{{ appointment.title }}</span> -->
+                    <span> mohsen</span>
+                  </div>
+                </ng-container>
+                <!-- } -->
+              </div>
+            </td>
+            }
+          </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

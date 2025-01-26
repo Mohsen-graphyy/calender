@@ -1,32 +1,68 @@
-@use './../../styles/mixins' as *;
+@use "./../../styles/mixins" as *;
 
 .calendar {
-    background-color: rgb(236, 233, 255);
-    height: 100dvh;
-    @include element('container'){
-        width: 100%;
-        margin: 0 auto;
-        @include at-gte-m{
-            max-width: 640px;
-        }  
-        @include at-gte-l{
-            max-width: 768px;
+  background-color: rgb(236, 233, 255);
+  min-height: 100dvh;
+  height: max-content;
+  padding-bottom: 20px;
+  @include element("container") {
+    width: 100%;
+    margin: 0 auto;
+    @include at-gte-m {
+      max-width: 640px;
+    }
+    @include at-gte-l {
+      max-width: 768px;
+    }
+    @include at-gte-xl {
+      max-width: 1024px;
+    }
+    @include at-gte-xxl {
+      max-width: 1280px;
+    }
+  }
+  @include element(header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @include element(controls) {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  @include element(body) {
+    border-radius: 20px;
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 20px;
+  }
+  @include element(table) {
+    table-layout: fixed;
+    margin-top: 1rem;
+    thead {
+      th {
+        font-size: 22px;
+        font-weight: 100;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          &:first-child {
+            border-left: 1px solid #ddd;
+          }
+          vertical-align: top;
+          position: relative;
+          border-right: 1px solid #ddd;
+          height: 150px;
+          border-bottom: 1px solid #ddd;
+          padding: 3px;
+          font-weight: 100;
         }
-        @include at-gte-xl{
-            max-width: 1024px;
-        }
-        @include at-gte-xxl{
-            max-width: 1280px;
-        }     
+      }
     }
-    @include element(header){
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    @include element(controls){
-        display: flex;
-        gap: 4px;
-        align-items: center;
-    }
+  }
 }
