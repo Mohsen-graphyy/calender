@@ -1,0 +1,117 @@
+$vp-small-mobile-max: 320px;
+$vp-mobile-max: 480px;
+$vp-tablet-portrait-max: 768px;
+$vp-tablet-landscape-max: 1024px;
+$vp-desktop-max: 1200px;
+$vp-wide-min: 1440px;
+
+// Mixin for __element
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+// Mixin for --modifier
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+// Breakpoint mixins
+@mixin at-e-m {
+  @media only screen and (min-width: $vp-mobile-max + 1) and (max-width: $vp-tablet-portrait-max - 1) {
+    @content;
+  }
+}
+
+@mixin at-e-l {
+  @media only screen and (min-width: $vp-tablet-portrait-max) and (max-width: $vp-tablet-landscape-max - 1) {
+    @content;
+  }
+}
+
+@mixin at-e-l-xl {
+  @media only screen and (min-width: $vp-tablet-landscape-max) and (max-width: $vp-desktop-max - 1) {
+    @content;
+  }
+}
+
+@mixin at-e-xl {
+  @media only screen and (min-width: $vp-tablet-landscape-max) and (max-width: $vp-wide-min - 1) {
+    @content;
+  }
+}
+
+@mixin at-e-xxl {
+  @media only screen and (min-width: $vp-wide-min + 1) {
+    @content;
+  }
+}
+
+@mixin at-gte-m {
+  @media only screen and (min-width: $vp-mobile-max) {
+    @content;
+  }
+}
+
+@mixin at-gte-l {
+  @media only screen and (min-width: $vp-tablet-portrait-max) {
+    @content;
+  }
+}
+
+@mixin at-gte-xl {
+  @media only screen and (min-width: $vp-tablet-landscape-max) {
+    @content;
+  }
+}
+
+@mixin at-gte-l-xl {
+  @media only screen and (min-width: $vp-desktop-max) {
+    @content;
+  }
+}
+
+@mixin at-gte-xxl {
+  @media only screen and (min-width: $vp-wide-min) {
+    @content;
+  }
+}
+
+@mixin at-e-xs {
+  @media only screen and (max-width: $vp-small-mobile-max) {
+    @content;
+  }
+}
+
+@mixin at-e-s {
+  @media only screen and (max-width: $vp-mobile-max) {
+    @content;
+  }
+}
+
+@mixin at-lte-m {
+  @media only screen and (max-width: $vp-tablet-portrait-max) {
+    @content;
+  }
+}
+
+@mixin at-lte-l {
+  @media only screen and (max-width: $vp-tablet-landscape-max) {
+    @content;
+  }
+}
+
+@mixin at-lte-l-xl {
+  @media only screen and (max-width: $vp-desktop-max) {
+    @content;
+  }
+}
+
+@mixin at-lte-xl {
+  @media only screen and (max-width: $vp-wide-min) {
+    @content;
+  }
+}

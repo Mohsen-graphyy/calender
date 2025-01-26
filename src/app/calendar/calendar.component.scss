@@ -1,0 +1,32 @@
+@use './../../styles/mixins' as *;
+
+.calendar {
+    background-color: rgb(236, 233, 255);
+    height: 100dvh;
+    @include element('container'){
+        width: 100%;
+        margin: 0 auto;
+        @include at-gte-m{
+            max-width: 640px;
+        }  
+        @include at-gte-l{
+            max-width: 768px;
+        }
+        @include at-gte-xl{
+            max-width: 1024px;
+        }
+        @include at-gte-xxl{
+            max-width: 1280px;
+        }     
+    }
+    @include element(header){
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @include element(controls){
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+}
