@@ -45,14 +45,17 @@
               <div class="cell-overlay" tabindex="0"></div>
               <div class="date">{{ date.getDate() }}</div>
               <div class="calendar__appointment">
-                @for (appointment of appointments; track $index) {
-                    @if (isEqualDate(appointment.date, date)) {
-                        <ng-container>
-                            <div tabindex="0" class="calendar__appointment--item" [style]="{backgroundColor: appointment.color}">
-                                <span>{{ appointment.title }}</span>
-                            </div>
-                        </ng-container>
-                    }
+                @for (appointment of getAppointmentsForDate(date); track $index)
+                {
+                <ng-container>
+                  <div
+                    tabindex="0"
+                    class="calendar__appointment--item"
+                    [style]="{ backgroundColor: appointment.color }"
+                  >
+                    <span>{{ appointment.title }}</span>
+                  </div>
+                </ng-container>
                 }
               </div>
             </td>

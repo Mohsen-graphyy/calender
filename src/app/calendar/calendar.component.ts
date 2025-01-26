@@ -275,4 +275,10 @@ export class CalendarComponent {
       date.getDate() === checkedDate.getDate()
     );
   }
+
+  getAppointmentsForDate(date: Date) {
+    return this.appointments.filter((appointment) =>
+      this.isEqualDate(appointment.date, date)
+    );
+  }
 }
