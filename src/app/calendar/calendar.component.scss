@@ -25,6 +25,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(236, 233, 255);
   }
   @include element(controls) {
     display: flex;
@@ -39,13 +43,15 @@
   }
   @include element(table) {
     table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 5px;
     margin-top: 1rem;
     thead {
       th {
         font-size: 22px;
         font-weight: 100;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        // border-bottom: 1px solid #ddd;
       }
     }
     tbody {
@@ -57,8 +63,10 @@
           vertical-align: top;
           position: relative;
           border-right: 1px solid #ddd;
-          height: 150px;
-          border-bottom: 1px solid #ddd;
+          border-radius: 10px;
+          margin: 4px;
+          height: 100px;
+          border: 1px solid #ddd;
           padding: 3px;
           font-weight: 100;
         }
@@ -72,9 +80,9 @@
     gap: 5px;
     font-size: 0.8em;
     @include modifier(item) {
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       display: block;
       padding: 2px 5px;
       border-radius: 5px;
