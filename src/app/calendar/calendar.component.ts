@@ -276,9 +276,26 @@ export class CalendarComponent {
     );
   }
 
-  getAppointmentsForDate(date: Date) {
+  getAppointmentsForDate(date: Date): Appointment[] {
     return this.appointments.filter((appointment) =>
       this.isEqualDate(appointment.date, date)
     );
+  }
+
+  goToNext(): void {
+    this.viewDate = new Date(
+      this.viewDate.setMonth(this.viewDate.getMonth() + 1)
+    );
+    this.generateMonthView(this.viewDate);
+  }
+  goToPrevious(): void {
+    this.viewDate = new Date(
+      this.viewDate.setMonth(this.viewDate.getMonth() - 1)
+    );
+    this.generateMonthView(this.viewDate);
+  }
+  goToToday(): void {
+    this.viewDate = new Date();
+    this.generateMonthView(this.viewDate);
   }
 }

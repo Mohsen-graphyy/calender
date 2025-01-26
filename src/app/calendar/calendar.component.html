@@ -11,11 +11,11 @@
         }
       </div>
       <div class="calendar__controls">
-        <button mat-stroked-button>Today</button>
-        <button mat-icon-button>
+        <button mat-stroked-button (click)="goToToday()">Today</button>
+        <button mat-icon-button (click)="goToPrevious()">
           <mat-icon>chevron_left</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="goToNext()">
           <mat-icon>chevron_right</mat-icon>
         </button>
         <button mat-flat-button>Add Appointment</button>
