@@ -41,7 +41,7 @@
           @for (week of weeks; track $index) {
           <tr>
             @for (date of week; track $index) {
-            <td>
+            <td [class]="{ 'calendar__table--disable' : !isCurrentMonth(date)}">
               <div class="cell-overlay" tabindex="0"></div>
               <div class="date">{{ date.getDate() }}</div>
               <div class="calendar__appointment">

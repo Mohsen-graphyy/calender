@@ -298,4 +298,10 @@ export class CalendarComponent {
     this.viewDate = new Date();
     this.generateMonthView(this.viewDate);
   }
+  isCurrentMonth(date: Date): boolean {
+    return (
+      date.getFullYear() === this.viewDate.getFullYear() &&
+      date.getMonth() === this.viewDate.getMonth()
+    );
+  }
 }
