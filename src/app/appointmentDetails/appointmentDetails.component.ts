@@ -10,6 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-appointment-modal',
   templateUrl: './appointmentDetails.component.html',
+  styles: `
+    .appointment-modal-item{
+        padding: 3px 5px;
+        width: fit-content;
+        border-radius: 5px;
+    }
+  `,
   imports: [MatDialogModule, CommonModule, MatButtonModule],
 })
 export class AppointmentModalComponent {
