@@ -1,8 +1,8 @@
 <h2 mat-dialog-title>Appointments for {{ data.date | date }}</h2>
-<mat-dialog-content>
+<mat-dialog-content cdkDropListGroup>
   @for (appointment of data.appointments; track $index) {
-  <div>
-    <h3 class="appointment-modal-item" [style.background]="appointment.color">
+  <div cdkDrag>
+    <h3 class="appointment-modal-item" [style.background]="appointment.color" cdkDragHandle>
       {{ appointment.title }}
     </h3>
     <p>{{ appointment.startTime }} - {{ appointment.endTime }}</p>

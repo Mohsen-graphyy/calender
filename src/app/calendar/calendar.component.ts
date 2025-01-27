@@ -4,6 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { AppointmentDialogComponent } from './../appointment/appointment.dialog.component';
 import { AppointmentModalComponent } from './../appointmentDetails/appointmentDetails.component';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 export interface Appointment {
   uuid?: string;
   date: Date;
@@ -17,7 +20,7 @@ export interface Appointment {
   selector: 'calendar',
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
-  imports: [MatIconModule, MatButtonModule],
+  imports: [MatIconModule, MatButtonModule, DragDropModule],
 })
 export class CalendarComponent {
   viewDate: Date = new Date();
@@ -377,5 +380,14 @@ export class CalendarComponent {
 
   isToday(date: Date) {
     return this.isEqualDate(date, new Date());
+  }
+
+  drop(event: CdkDragDrop<Appointment[]>, date: Date, slot?: string) {
+    const movedAppointment = event.item.data;
+    movedAppointment.date = date;
+    if (slot) {
+      movedAppointment.startTime = slot;
+      movedAppointment.endTime = slot;
+    }
   }
 }

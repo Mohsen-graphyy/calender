@@ -42,7 +42,13 @@
           <tr>
             @for (date of week; track $index) {
             <td
-              [class]="{ 'calendar__table--disable': !isCurrentMonth(date), 'calendar__table--today' : isToday(date) }"
+              [class]="{
+                'calendar__table--disable': !isCurrentMonth(date),
+                'calendar__table--today': isToday(date)
+              }"
+              cdkDropList
+              (cdkDropListDropped)="drop($event, date)"
+              [cdkDropListData]="appointments"
               (click)="selectDate(date)"
             >
               <div class="cell-overlay" tabindex="0"></div>
@@ -54,22 +60,28 @@
                   <div
                     tabindex="0"
                     class="calendar__appointment--item"
+                    cdkDrag
+                    cdkDragHandle
+                    [cdkDragData]="appointment"
                     [style]="{ backgroundColor: appointment.color }"
                   >
                     <span>{{ appointment.title }}</span>
                   </div>
                 </ng-container>
-                } }
-                @if(getAppointmentsForDate(date).length > 2){
-                  <ng-container>
-                    <div
-                      tabindex="0"
-                      class="calendar__appointment--item"
-                      (click)="openAppointmentModal(date); $event.stopPropagation()"
+                } } @if(getAppointmentsForDate(date).length > 2){
+                <ng-container>
+                  <div
+                    tabindex="0"
+                    class="calendar__appointment--item"
+                    (click)="
+                      openAppointmentModal(date); $event.stopPropagation()
+                    "
+                  >
+                    <span
+                      >+{{ getAppointmentsForDate(date).length - 2 }} more</span
                     >
-                      <span>+{{ getAppointmentsForDate(date).length - 2 }} more</span>
-                    </div>
-                  </ng-container>
+                  </div>
+                </ng-container>
                 }
               </div>
             </td>
