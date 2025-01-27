@@ -55,7 +55,7 @@ export class AppointmentDialogComponent {
       ],
       startTime: [this.data.startTime || '', Validators.required],
       endTime: [this.data.endTime || '', Validators.required],
-      color: [this.data.color || '#ddd'], // Optional color input with default
+      color: [this.data.color || '#ddddd'], // Optional color input with default
     });
   }
 

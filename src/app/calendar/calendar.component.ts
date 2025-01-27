@@ -329,11 +329,40 @@ export class CalendarComponent {
         title: '',
         startTime: `${h}:${m}`,
         endTime: `${h}:${m}`,
+        color: '#ddd',
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.addAppointment(
+          result.uuid,
+          result.date,
+          result.title,
+          result.startTime,
+          result.endTime,
+          result.color
+        );
+      }
     });
+  }
+  addAppointment(
+    uuid: string,
+    date: Date,
+    title: string,
+    startTime: string,
+    endTime: string,
+    color: string
+  ) {
+    this.appointments.push({
+      uuid,
+      date,
+      title,
+      startTime,
+      endTime,
+      color: color || this.getRandomColor(),
+    });
+    this.viewDate = date
+    this.generateMonthView(this.viewDate)
   }
 }
