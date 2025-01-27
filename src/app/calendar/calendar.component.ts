@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { AppointmentDialogComponent } from './../appointment/appointment.dialog.component';
 
-interface Appointment {
+export interface Appointment {
   uuid?: string;
   date: Date;
   title: string;
@@ -202,7 +204,7 @@ export class CalendarComponent {
       endTime: '12:00',
     },
   ];
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.appointments.forEach((appointment) => {
       appointment.color = this.getRandomColor();
     });
@@ -303,5 +305,15 @@ export class CalendarComponent {
       date.getFullYear() === this.viewDate.getFullYear() &&
       date.getMonth() === this.viewDate.getMonth()
     );
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

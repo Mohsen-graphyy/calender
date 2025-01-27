@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Create New Appointment</h2>
+<mat-dialog-content>
+  <form [formGroup]="appointmentForm">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      @if (appointmentForm.get('title')?.hasError('required')) {
+      <mat-error> Title is required </mat-error>
+      } @if (appointmentForm.get('title')?.hasError('maxLength')) {
+      <mat-error> Title cannot exceed 50 characters </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      @if (appointmentForm.get('date')?.hasError('required')) {
+      <mat-error> Date is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Start Time</mat-label>
+      <input matInput type="time" formControlName="startTime" />
+      @if (appointmentForm.get('startTime')?.hasError('required')) {
+      <mat-error> Start time is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>End Time</mat-label>
+      <input matInput type="time" formControlName="endTime" />
+      @if (appointmentForm.get('endTime')?.hasError('required')) {
+      <mat-error> End time is required </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Color</mat-label>
+      <input matInput type="color" formControlName="color" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!appointmentForm.valid"
+    (click)="submitFrom()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
