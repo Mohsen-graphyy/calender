@@ -1,0 +1,8 @@
+@use "./../../styles/mixins" as *;
+.form {
+  padding-top: 10px !important;
+  @include element(field) {
+    width: 100% !important;
+    margin: 5px 0;
+  }
+}

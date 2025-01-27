@@ -21,6 +21,7 @@ export interface Appointment {
 })
 export class CalendarComponent {
   viewDate: Date = new Date();
+  selectedDate: Date | null = null;
   currentView = 'month';
   weekDays: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   monthDays: Date[] = [];
@@ -250,8 +251,6 @@ export class CalendarComponent {
     if (week.length > 0) {
       this.weeks.push(week);
     }
-    console.log(this.monthDays);
-    console.log(this.weeks);
   }
 
   getRandomColor(): string {
@@ -307,9 +306,30 @@ export class CalendarComponent {
     );
   }
 
+  selectDate(date?: Date) {
+    console.log(date);
+
+    if (date) {
+      this.selectedDate = date;
+    } else {
+      this.selectedDate = new Date();
+    }
+    this.openDialog();
+  }
+
   openDialog(): void {
+    const hour = new Date().getHours();
+    const minutes = new Date().getMinutes();
+    const h = hour < 10 ? `0${hour}` : hour;
+    const m = minutes < 10 ? `0${minutes}` : minutes;
     const dialogRef = this.dialog.open(AppointmentDialogComponent, {
-      width: '400px',
+      width: '450px',
+      data: {
+        date: this.selectedDate,
+        title: '',
+        startTime: `${h}:${m}`,
+        endTime: `${h}:${m}`,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
