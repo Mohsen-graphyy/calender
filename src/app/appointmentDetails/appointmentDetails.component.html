@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Appointments for {{ data.date | date }}</h2>
+<mat-dialog-content>
+  @for (appointment of data.appointments; track $index) {
+  <div class="appointment-modal__item">
+        <h3 [style.color]="appointment.color">{{ appointment.title }}</h3>
+        <p>{{ appointment.startTime }} - {{ appointment.endTime }}</p>
+  </div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

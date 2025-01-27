@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { AppointmentDialogComponent } from './../appointment/appointment.dialog.component';
-
+import { AppointmentModalComponent } from './../appointmentDetails/appointmentDetails.component';
 export interface Appointment {
   uuid?: string;
   date: Date;
@@ -362,7 +362,16 @@ export class CalendarComponent {
       endTime,
       color: color || this.getRandomColor(),
     });
-    this.viewDate = date
-    this.generateMonthView(this.viewDate)
+    this.viewDate = date;
+    this.generateMonthView(this.viewDate);
+  }
+
+  // this method open modal to show the all the appoinments
+  openAppointmentModal(date: Date): void {
+    const appointments = this.getAppointmentsForDate(date);
+    this.dialog.open(AppointmentModalComponent, {
+      width: '400px',
+      data: { date, appointments },
+    });
   }
 }
