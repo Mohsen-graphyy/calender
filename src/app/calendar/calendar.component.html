@@ -42,7 +42,7 @@
           <tr>
             @for (date of week; track $index) {
             <td
-              [class]="{ 'calendar__table--disable': !isCurrentMonth(date) }"
+              [class]="{ 'calendar__table--disable': !isCurrentMonth(date), 'calendar__table--today' : isToday(date) }"
               (click)="selectDate(date)"
             >
               <div class="cell-overlay" tabindex="0"></div>

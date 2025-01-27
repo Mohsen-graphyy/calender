@@ -77,6 +77,9 @@
       color: #adadad;
       border: none!important;
     }
+    @include modifier(today){
+      background-color: rgb(206, 254, 254);
+    }
   }
   @include element(appointment) {
     margin-top: 10px;

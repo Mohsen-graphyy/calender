@@ -374,4 +374,8 @@ export class CalendarComponent {
       data: { date, appointments },
     });
   }
+
+  isToday(date: Date) {
+    return this.isEqualDate(date, new Date());
+  }
 }
