@@ -29,6 +29,10 @@
     top: 0;
     z-index: 999;
     background-color: rgb(236, 233, 255);
+    flex-direction: column;
+    @include at-gte-l {
+      flex-direction: row;
+    }
   }
   @include element(controls) {
     display: flex;
@@ -40,12 +44,14 @@
     background-color: #fff;
     margin-top: 10px;
     padding: 20px;
+    overflow-x: auto;
   }
   @include element(table) {
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 5px;
     margin-top: 1rem;
+    width: auto;
     thead {
       th {
         font-size: 22px;
@@ -72,12 +78,12 @@
         }
       }
     }
-    @include modifier(disable){
+    @include modifier(disable) {
       background-color: #f6f6f6;
       color: #adadad;
-      border: none!important;
+      border: none !important;
     }
-    @include modifier(today){
+    @include modifier(today) {
       background-color: rgb(206, 254, 254);
     }
   }
