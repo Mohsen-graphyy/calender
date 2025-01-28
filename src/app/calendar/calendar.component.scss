@@ -52,6 +52,9 @@
     border-spacing: 5px;
     margin-top: 1rem;
     width: auto;
+    @include at-gte-l{
+      width: 100%;
+    }
     thead {
       th {
         font-size: 22px;
