@@ -6,6 +6,7 @@ import { AppointmentDialogComponent } from './../appointment/appointment.dialog.
 import { ModalComponent } from './../modal/modal.component';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AboutMeComponent } from '../about-me/about-me.component';
 
 export interface Appointment {
   uuid?: string;
@@ -314,7 +315,11 @@ export class CalendarComponent {
     }
     this.openDialog();
   }
-
+  openAboutMe(): void {
+    this.dialog.open(AboutMeComponent, {
+      width: '450px',
+    });
+  }
   openDialog(): void {
     const hour = new Date().getHours();
     const minutes = new Date().getMinutes();

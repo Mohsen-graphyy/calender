@@ -2,7 +2,7 @@
   <div class="calendar__container" cdkDropListGroup>
     <div class="calendar__header">
       <div class="calendar__header__info-box">
-        <button mat-raised-button><mat-icon >face</mat-icon> About me</button>
+        <button mat-raised-button (click)="openAboutMe()"><mat-icon >face</mat-icon> About me</button>
         <div>
           @if (currentView === 'month' || true) {
           <h2 class="calendar-month">
