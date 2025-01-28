@@ -412,7 +412,7 @@ export class CalendarComponent {
         }
       }
 
-      this.viewDate = result.date;
+      this.viewDate = result?.date;
       this.generateMonthView(this.viewDate);
     });
   }
