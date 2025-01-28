@@ -70,8 +70,10 @@ export class AppointmentDialogComponent {
       this.dialogRef.close(newAppointment); // Close dialog and pass the data back
     }
   }
+  onDeleteClick(): void {
+    this.dialogRef.close({ remove: true, uuid: this.data.uuid });
+  }
 
-  // Method to close dialog without saving
   closeDialog(): void {
     this.dialogRef.close();
   }

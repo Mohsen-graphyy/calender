@@ -390,6 +390,12 @@ export class CalendarComponent {
       movedAppointment.endTime = slot;
     }
   }
+  deleteAppointment(appointment: Appointment) {
+    const index = this.appointments.indexOf(appointment);
+    if (index > -1) {
+      this.appointments.splice(index, 1);
+    }
+  }
   editAppointment(appointment: Appointment) {
     const dialogRef = this.dialog.open(AppointmentDialogComponent, {
       width: '500px',
