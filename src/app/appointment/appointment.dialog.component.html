@@ -39,7 +39,10 @@
 
     <mat-form-field appearance="outline" class="form__field">
       <mat-label>Color</mat-label>
-      <input matInput type="color" formControlName="color" />
+      <input matInput type="color" formControlName="color"/>
+      @if (appointmentForm.get('color')?.hasError('required')) {
+      <mat-error> Color is required </mat-error>
+      }
     </mat-form-field>
   </form>
 </mat-dialog-content>

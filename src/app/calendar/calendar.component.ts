@@ -414,6 +414,9 @@ export class CalendarComponent {
           this.appointments[index] = result;
         }
       }
+
+      this.viewDate = result.date;
+      this.generateMonthView(this.viewDate);
     });
   }
 }

@@ -64,7 +64,7 @@ export class AppointmentDialogComponent {
   submitFrom() {
     if (this.appointmentForm.valid) {
       const newAppointment: Appointment = {
-        uuid: crypto.randomUUID(), // Generate a unique ID
+        uuid: this.data.uuid || crypto.randomUUID(), // Generate a unique ID
         ...this.appointmentForm.value,
       };
       this.dialogRef.close(newAppointment); // Close dialog and pass the data back
