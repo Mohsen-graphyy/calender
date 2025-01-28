@@ -63,6 +63,7 @@
                     cdkDrag
                     cdkDragHandle
                     [cdkDragData]="appointment"
+                    (click)="editAppointment(appointment); $event.stopPropagation()"
                     [style]="{ backgroundColor: appointment.color }"
                   >
                     <span>{{ appointment.title }}</span>

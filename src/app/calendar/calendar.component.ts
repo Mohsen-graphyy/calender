@@ -390,4 +390,24 @@ export class CalendarComponent {
       movedAppointment.endTime = slot;
     }
   }
+  editAppointment(appointment: Appointment) {
+    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+      width: '500px',
+      panelClass: 'dialog-container',
+      data: appointment,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        const index = this.appointments.findIndex(
+          (appointment) => appointment.uuid === result.uuid
+        );
+        if (result.remove) {
+          this.appointments.splice(index, 1);
+        } else {
+          this.appointments[index] = result;
+        }
+      }
+    });
+  }
 }

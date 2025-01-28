@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Appointment } from './../calendar/calendar.component';
 import { provideNativeDateAdapter } from '@angular/material/core';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-appointment-dialog',
   templateUrl: './appointment.dialog.component.html',
@@ -27,6 +27,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatNativeDateModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
