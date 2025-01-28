@@ -63,7 +63,9 @@
                     cdkDrag
                     cdkDragHandle
                     [cdkDragData]="appointment"
-                    (click)="editAppointment(appointment); $event.stopPropagation()"
+                    (click)="
+                      editAppointment(appointment); $event.stopPropagation()
+                    "
                     [style]="{ backgroundColor: appointment.color }"
                   >
                     <span>{{ appointment.title }}</span>
@@ -74,15 +76,37 @@
                   <div
                     tabindex="0"
                     class="calendar__appointment--item"
-                    (click)="
-                      openAppointmentModal(date); $event.stopPropagation()
-                    "
+                    (click)="showModal(date.toString()); $event.stopPropagation()"
                   >
                     <span
                       >+{{ getAppointmentsForDate(date).length - 2 }} more</span
                     >
                   </div>
                 </ng-container>
+                <app-modal
+                  [isVisible]="visibleModals[date.toString()]"
+                  (closeModal)="hideModal(date.toString())"
+                >
+                  <h4>appointments :</h4>
+                  @for (appointment of getAppointmentsForDate(date); track
+                  $index) {
+                  <ng-container>
+                    <div
+                      tabindex="0"
+                      class="calendar__appointment--item"
+                      cdkDrag
+                      cdkDragHandle
+                      [cdkDragData]="appointment"
+                      (click)="
+                        editAppointment(appointment); $event.stopPropagation()
+                      "
+                      [style]="{ backgroundColor: appointment.color }"
+                    >
+                      <span>{{ appointment.title }}</span>
+                    </div>
+                  </ng-container>
+                  }
+                </app-modal>
                 }
               </div>
             </td>

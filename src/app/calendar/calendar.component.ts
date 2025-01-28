@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { AppointmentDialogComponent } from './../appointment/appointment.dialog.component';
-import { AppointmentModalComponent } from './../appointmentDetails/appointmentDetails.component';
+import { ModalComponent } from './../modal/modal.component';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -20,7 +20,7 @@ export interface Appointment {
   selector: 'calendar',
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
-  imports: [MatIconModule, MatButtonModule, DragDropModule],
+  imports: [MatIconModule, MatButtonModule, DragDropModule, ModalComponent],
 })
 export class CalendarComponent {
   viewDate: Date = new Date();
@@ -308,7 +308,7 @@ export class CalendarComponent {
 
   selectDate(date?: Date) {
     console.log('selected date', date);
-    
+
     if (date) {
       this.selectedDate = date;
     } else {
@@ -366,13 +366,14 @@ export class CalendarComponent {
     this.generateMonthView(this.viewDate);
   }
 
-  // this method open modal to show the all the appoinments
-  openAppointmentModal(date: Date): void {
-    const appointments = this.getAppointmentsForDate(date);
-    this.dialog.open(AppointmentModalComponent, {
-      width: '400px',
-      data: { date, appointments },
-    });
+  visibleModals: { [key: string]: boolean } = {};
+
+  showModal(id: string) {
+    this.visibleModals[id] = true;
+  }
+
+  hideModal(id: string) {
+    this.visibleModals[id] = false;
   }
 
   isToday(date: Date) {
