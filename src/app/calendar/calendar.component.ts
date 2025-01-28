@@ -307,8 +307,6 @@ export class CalendarComponent {
   }
 
   selectDate(date?: Date) {
-    console.log('selected date', date);
-
     if (date) {
       this.selectedDate = date;
     } else {
@@ -414,7 +412,6 @@ export class CalendarComponent {
           this.generateMonthView(this.viewDate);
         }
       }
-
     });
   }
 }
