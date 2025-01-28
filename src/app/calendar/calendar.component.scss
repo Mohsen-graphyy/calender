@@ -33,6 +33,11 @@
     @include at-gte-l {
       flex-direction: row;
     }
+    @include element(info-box){
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
   }
   @include element(controls) {
     display: flex;
