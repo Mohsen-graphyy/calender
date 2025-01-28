@@ -257,11 +257,8 @@ export class CalendarComponent {
   }
 
   getRandomColor(): string {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    const a = 0.4;
-    return `rgba(${r},${g},${b},${a})`;
+    const colors = ['#FC8EAC', '#10a690', '#c0f862', '#fcd04a', '#a1a6fc'];
+    return colors[Math.floor(Math.random() * colors.length)];
   }
 
   generateTimeSlots() {
@@ -332,7 +329,7 @@ export class CalendarComponent {
         title: '',
         startTime: `${h}:${m}`,
         endTime: `${h}:${m}`,
-        color: '#ddd',
+        color: '#dddddd',
       },
     });
 
