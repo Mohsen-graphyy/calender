@@ -307,8 +307,8 @@ export class CalendarComponent {
   }
 
   selectDate(date?: Date) {
-    console.log(date);
-
+    console.log('selected date', date);
+    
     if (date) {
       this.selectedDate = date;
     } else {
@@ -409,11 +409,11 @@ export class CalendarComponent {
           this.appointments.splice(index, 1);
         } else {
           this.appointments[index] = result;
+          this.viewDate = result?.date;
+          this.generateMonthView(this.viewDate);
         }
       }
 
-      this.viewDate = result?.date;
-      this.generateMonthView(this.viewDate);
     });
   }
 }
