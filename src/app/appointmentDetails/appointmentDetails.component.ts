@@ -7,6 +7,7 @@ import {
 import { Appointment } from '../calendar/calendar.component';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+
 @Component({
   selector: 'app-appointment-modal',
   templateUrl: './appointmentDetails.component.html',
