@@ -1,10 +1,12 @@
 import {
   Component,
-  ElementRef,
-  EventEmitter,
   Input,
   Output,
-  HostListener,
+  EventEmitter,
+  ElementRef,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  OnInit,
 } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -12,6 +14,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('modalAnimation', [
       transition(':enter', [
@@ -27,22 +30,35 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ]),
   ],
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit, OnDestroy {
   @Input() isVisible = false;
   @Output() closeModal = new EventEmitter<void>();
 
-  constructor(private el: ElementRef) {}
+  private documentClickListener: (event: MouseEvent) => void;
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
+  constructor(private el: ElementRef) {
+    this.documentClickListener = this.onDocumentClick.bind(this);
+  }
+
+  ngOnInit(): void {
+    document.addEventListener('click', this.documentClickListener);
+  }
+
+  ngOnDestroy(): void {
+    document.removeEventListener(
+      'click',
+      this.documentClickListener as EventListener
+    );
+  }
+
+  private onDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
-
-    if (this.isVisible && this.el.nativeElement.contains(target) === false) {
+    if (this.isVisible && !this.el.nativeElement.contains(target)) {
       this.close();
     }
   }
 
-  close() {
+  close(): void {
     this.closeModal.emit();
   }
 }
