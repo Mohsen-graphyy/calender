@@ -28,8 +28,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ],
 })
 export class ModalComponent {
-  @Input() isVisible: boolean = false;
-  @Output() closeModal: EventEmitter<void> = new EventEmitter();
+  @Input() isVisible = false;
+  @Output() closeModal = new EventEmitter<void>();
 
   constructor(private el: ElementRef) {}
 

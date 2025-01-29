@@ -18,7 +18,7 @@ export interface Appointment {
 }
 
 @Component({
-  selector: 'calendar',
+  selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
   imports: [MatIconModule, MatButtonModule, DragDropModule, ModalComponent],
@@ -369,7 +369,7 @@ export class CalendarComponent {
     this.generateMonthView(this.viewDate);
   }
 
-  visibleModals: { [key: string]: boolean } = {};
+  visibleModals: Record<string, boolean> = {};
 
   showModal(id: string) {
     this.visibleModals[id] = true;
